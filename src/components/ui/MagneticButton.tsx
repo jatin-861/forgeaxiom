@@ -14,7 +14,6 @@ interface MagneticButtonProps {
   className?: string
   onClick?: () => void
   variant?: 'primary' | 'ghost'
-  liquid?: boolean
   pill?: boolean
 }
 
@@ -23,21 +22,20 @@ export function MagneticButton({
   className,
   onClick,
   variant = 'primary',
-  liquid = true,
   pill = true,
 }: MagneticButtonProps) {
   const container = useRef<HTMLDivElement>(null)
-  const filling = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!container.current) return
+    const currentContainer = container.current
+    if (!currentContainer) return
 
-    const xTo = gsap.quickTo(container.current, 'x', { duration: 1, ease: 'elastic.out(1, 0.3)' })
-    const yTo = gsap.quickTo(container.current, 'y', { duration: 1, ease: 'elastic.out(1, 0.3)' })
+    const xTo = gsap.quickTo(currentContainer, 'x', { duration: 1, ease: 'elastic.out(1, 0.3)' })
+    const yTo = gsap.quickTo(currentContainer, 'y', { duration: 1, ease: 'elastic.out(1, 0.3)' })
 
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e
-      const { height, width, left, top } = container.current!.getBoundingClientRect()
+      const { height, width, left, top } = currentContainer.getBoundingClientRect()
       const x = clientX - (left + width / 2)
       const y = clientY - (top + height / 2)
       xTo(x * 0.35)
@@ -49,12 +47,12 @@ export function MagneticButton({
       yTo(0)
     }
 
-    container.current.addEventListener('mousemove', handleMouseMove)
-    container.current.addEventListener('mouseleave', handleMouseLeave)
+    currentContainer.addEventListener('mousemove', handleMouseMove)
+    currentContainer.addEventListener('mouseleave', handleMouseLeave)
 
     return () => {
-      container.current?.removeEventListener('mousemove', handleMouseMove)
-      container.current?.removeEventListener('mouseleave', handleMouseLeave)
+      currentContainer.removeEventListener('mousemove', handleMouseMove)
+      currentContainer.removeEventListener('mouseleave', handleMouseLeave)
     }
   }, [])
 

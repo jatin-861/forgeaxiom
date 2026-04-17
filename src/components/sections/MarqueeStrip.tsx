@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+// import { motion } from 'framer-motion'
 
 const techs = [
   'REACT', 'NEXT.JS 14', 'THREE.JS', 'GSAP', 'FRAMER MOTION', 'NOTION CMS', 'TAILWIND CSS', 'TYPESCRIPT', 'WEBGL', 'NODE.JS', 'MONGODB'

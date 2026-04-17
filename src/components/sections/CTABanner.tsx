@@ -38,7 +38,7 @@ export function CTABanner() {
           </h2>
 
           <p className="text-white/60 text-lg md:text-xl font-body mb-12 max-w-2xl mx-auto">
-            Let's build something extraordinary together. From design systems to complex full-stack architectures, we deliver perfection.
+            Let&apos;s build something extraordinary together. From design systems to complex full-stack architectures, we deliver perfection.
           </p>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">

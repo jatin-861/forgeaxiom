@@ -49,7 +49,7 @@ export function NavBar() {
         {/* CTA */}
         <div className="hidden md:block">
           <Link href="/contact">
-            <MagneticButton className="px-8 flex items-center justify-center">Let's Talk</MagneticButton>
+            <MagneticButton className="px-8 flex items-center justify-center">Let&apos;s Talk</MagneticButton>
           </Link>
         </div>
 

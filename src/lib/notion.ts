@@ -1,16 +1,17 @@
 import { Client } from '@notionhq/client'
-import { NotionToMarkdown } from 'notion-to-md'
+// import { NotionToMarkdown } from 'notion-to-md'
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 })
 
-const n2m = new NotionToMarkdown({ notionClient: notion })
+// const n2m = new NotionToMarkdown({ notionClient: notion })
 
 export async function getProjects() {
   const databaseId = process.env.NOTION_PROJECTS_DATABASE_ID
   if (!databaseId) return []
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const response = await (notion.databases as any).query({
     database_id: databaseId,
     filter: {
@@ -34,6 +35,7 @@ export async function getBlogPosts() {
   const databaseId = process.env.NOTION_BLOG_DATABASE_ID
   if (!databaseId) return []
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const response = await (notion.databases as any).query({
     database_id: databaseId,
     filter: {
@@ -47,7 +49,8 @@ export async function getBlogPosts() {
   return response.results
 }
 
-export async function getPostContent(_slug: string) {
+export async function getPostContent(slug: string) {
+  console.log('Fetching content for:', slug)
   // Logic to find page ID by slug and convert to MD
   // To be implemented when database schema is confirmed
   return ""

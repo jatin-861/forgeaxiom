@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useInView, motion, useSpring, useTransform } from 'framer-motion'
 
 interface AnimatedCounterProps {
@@ -10,7 +10,7 @@ interface AnimatedCounterProps {
   suffix?: string
 }
 
-export function AnimatedCounter({ value, duration = 2, className, suffix = '' }: AnimatedCounterProps) {
+export function AnimatedCounter({ value, className, suffix = '' }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
   
