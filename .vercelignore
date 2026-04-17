@@ -1,0 +1,10 @@
+.agent/
+.gemini/
+.env.local
+.env.*.local
+node_modules/
+.next/
+out/
+build/
+dist/
+*.log
