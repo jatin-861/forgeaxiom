@@ -1,0 +1,287 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ══════════════════════════════════════════════
+   FORGEAXIOM — GLOBAL DESIGN SYSTEM
+   ══════════════════════════════════════════════ */
+
+@layer base {
+  :root {
+    --bg-abyss: #07081A;
+    --bg-void: #0D0E2A;
+    --bg-nebula: #12143A;
+    --clr-forge: #7C3AED;
+    --clr-crystal: #A78BFA;
+    --clr-electric: #818CF8;
+    --clr-pulse: #C084FC;
+    --clr-star: #38BDF8;
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(167, 139, 250, 0.15);
+    --glass-blur: blur(20px) saturate(180%);
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-expo: cubic-bezier(0.87, 0, 0.13, 1);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--bg-abyss);
+    color: rgba(255, 255, 255, 0.87);
+    cursor: none;
+    /* Custom cursor replaces native */
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(124, 58, 237, 0.4);
+    color: white;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg-abyss);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--clr-forge);
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+
+  /* ─── GLASSMORPHISM ─── */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(167, 139, 250, 0.12);
+    border-radius: 20px;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.5s var(--ease-out);
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(167, 139, 250, 0.3);
+    box-shadow:
+      0 16px 64px rgba(124, 58, 237, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(-8px);
+  }
+
+  /* ─── CINEMATIC GLOW ─── */
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  }
+
+  .text-glow-forge {
+    text-shadow: 0 0 30px rgba(167, 139, 250, 0.4);
+  }
+
+  /* ─── GLASS NAVIGATION ─── */
+  .glass-nav {
+    background: rgba(7, 8, 26, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(167, 139, 250, 0.1);
+  }
+
+  /* ─── GLASS INPUT ─── */
+  .glass-input {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(167, 139, 250, 0.15);
+    border-radius: 12px;
+    color: white;
+    padding: 14px 18px;
+    font-size: 16px;
+    /* Prevents iOS zoom */
+    transition: all 0.3s var(--ease-out);
+  }
+
+  .glass-input:focus {
+    outline: none;
+    border-color: var(--clr-forge);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+  }
+
+  /* ─── MAGNETIC BUTTON ─── */
+  .btn-primary {
+    background: linear-gradient(135deg, var(--clr-forge), var(--clr-crystal));
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 32px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 16px;
+    cursor: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s var(--ease-out);
+    display: inline-block;
+    text-align: center;
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--clr-crystal), var(--clr-star));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .btn-primary:hover::after {
+    opacity: 1;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(124, 58, 237, 0.4);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid rgba(167, 139, 250, 0.3);
+    color: var(--clr-crystal);
+    border-radius: 12px;
+    padding: 14px 32px;
+    font-weight: 600;
+    cursor: none;
+    transition: all 0.3s var(--ease-out);
+    display: inline-block;
+    text-align: center;
+  }
+
+  .btn-ghost:hover {
+    background: rgba(124, 58, 237, 0.1);
+    border-color: var(--clr-forge);
+    transform: translateY(-2px);
+  }
+
+  /* ─── SECTION CONTAINER ─── */
+  .section-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: clamp(80px, 12vw, 160px) clamp(16px, 5vw, 80px);
+  }
+
+  /* ─── TAGS ─── */
+  .tech-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(124, 58, 237, 0.1);
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    border-radius: 4px;
+    font-size: var(--fs-small, 12px);
+    color: var(--clr-crystal);
+    transition: all 150ms;
+  }
+
+  .tech-tag:hover {
+    background: var(--clr-forge);
+    color: white;
+  }
+
+  /* ─── GLOW BADGE ─── */
+  .glow-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: rgba(124, 58, 237, 0.08);
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    border-radius: 50px;
+    font-size: 13px;
+    color: var(--clr-crystal);
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+}
+
+/* ─── LIQUID GLASS SVG FILTER ─── */
+.liquid-glass-filter {
+  display: none;
+}
+
+.liquid-glass {
+  filter: url(#liquid-glass);
+  backdrop-filter: blur(40px) saturate(200%);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 0 10px rgba(167, 139, 250, 0.2);
+  transition: all 0.6s var(--ease-out);
+  position: relative;
+}
+
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  filter: url(#chromatic-aberration);
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.liquid-glass:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(167, 139, 250, 0.4);
+  transform: translateY(-2px) scale(1.01);
+  filter: url(#liquid-glass) brightness(1.1);
+}
+
+.pill {
+  border-radius: 9999px !important;
+}
+
+@keyframes liquid-shift {
+
+  0%,
+  100% {
+    border-radius: 24px 40px 24px 40px;
+    transform: scale(1);
+  }
+
+  50% {
+    border-radius: 40px 24px 40px 24px;
+    transform: scale(1.02);
+  }
+}
+
+/* ─── COSMIC BACKGROUND ─── */
+.cosmic-bg {
+  background:
+    radial-gradient(ellipse at 20% 0%,
+      rgba(124, 58, 237, 0.15) 0%,
+      transparent 50%),
+    radial-gradient(ellipse at 80% 100%,
+      rgba(56, 189, 248, 0.08) 0%,
+      transparent 50%),
+    var(--bg-abyss);
+}
+
+/* ─── NEBULA GRADIENT ─── */
+.nebula-gradient {
+  background:
+    radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(124, 58, 237, 0.06),
+      transparent 40%);
+}
